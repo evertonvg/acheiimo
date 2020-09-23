@@ -1,0 +1,112 @@
+@font-face {
+  font-family: "gotham";
+  src: url("/fonts/gotham/GothamLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gotham";
+  src: url("/fonts//gotham/GothamBook.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gotham";
+  src: url("/fonts//gotham/GothamMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gotham";
+  src: url("/fonts//gotham/GothamBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "gotham";
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+label {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+ul {
+  margin: 0;
+}
+
+section {
+  padding: 150px 0;
+  overflow-x: hidden;
+  clear: both;
+}
+
+.default-button {
+  padding: 20px 40px !important;
+  background-color: white !important;
+  border-radius: 60px !important;
+  color: #0c5158 !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  transition: 0.3s ease all !important;
+}
+
+.default-button:hover {
+  background-color: #0c5158 !important;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.menu-button {
+  color: white !important;
+  padding: 15px 30px !important;
+  border-radius: 30px !important;
+  border: none;
+  background: linear-gradient(to right, #1b8a99 1%, #06525a 100%) !important;
+  transition: 1s ease all !important;
+  text-decoration: none !important;
+}
+
+.menu-button:hover {
+  background: linear-gradient(to left, #1b8a99 1%, #06525a 100%) !important;
+}
+
+.menu-button.form {
+  padding: 20px 130px !important;
+}
+
+@media (max-width: 1500px) {
+  section {
+    padding: 75px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-button,
+  .default-button {
+    padding: 12px 34px !important;
+  }
+}
+
