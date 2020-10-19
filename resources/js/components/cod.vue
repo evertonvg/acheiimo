@@ -1,11 +1,11 @@
 <template>
-    <div class="codpesquisa" @click="closecod" >
+    <div class="codpesquisa" @click="closecod" > 
         <div class="boxpesquisa" @click.stop>
             <div class="head">
                 <label for="id">BUSCA POR CÓDIGO</label> 
             </div>
             <div class="foot">
-                <form action="" method="GET">
+                <form :action="formroute" method="GET">
                     <input type="hidden" name="tipo" value="">
                     <input type="hidden" name="cidade" value="">
                     <input type="hidden" name="bairro" value="">
@@ -13,8 +13,8 @@
                     <input type="hidden" name="garagens" value="">
                     <input type="hidden" name="minvalue" value="0">
                     <input type="hidden" name="maxvalue" value="5000000">
-                    <input type="number" name="id" id="id" placeholder="DIGITE O CÓDIGO" ref="numbercod" @keydown="valid">
-                    <input type="submit" value="BUSCAR" class="pesquisar" >
+                    <input type="number" name="id" id="id" placeholder="DIGITE O CÓDIGO" ref="numbercod"  v-model="valuecod" max="9999" maxlength="4" >
+                    <input type="submit" value="BUSCAR" class="pesquisar" :disabled="valuecod==''">
                     <!-- :disabled=" isDisable() ?true:false " -->
                 </form>
             </div>
@@ -26,16 +26,24 @@ import mixinss from '../mixins/mixins.js'
 export default {
     name:'cod',
     mixins:[mixinss],
+    props:['formroute'],
+    data:
+    function(){
+        return{
+            valuecod:''
+        }
+    },
     methods:{
         closecod(el){
             mixinss.methods.fadeOut(el.target, 0.6, 'none')
+            document.body.style.overflowY = 'auto'
+
         },
         opencod(el){
             mixinss.methods.fadeIn(el, 0.6, 'flex')
+            document.body.style.overflowY = 'hidden'
         },
-        valid(){
-            console.log( this.$refs.numbercod.value)
-        }
+
     },
     computed:{
         isDisable(){
@@ -43,13 +51,13 @@ export default {
         }
     },
     mounted:function(){
-
+        
     }
     
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import 'node_modules/bootstrap/scss/bootstrap';
     @import "../../sass/variables.scss";
     .codpesquisa {
@@ -115,6 +123,13 @@ export default {
                         color: #909292;
                     }
                 }
+            }
+        }
+    }
+    @media(max-width:600px){
+        .codpesquisa {
+            .boxpesquisa{
+                width: 300px;
             }
         }
     }

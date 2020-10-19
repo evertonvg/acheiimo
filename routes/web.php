@@ -24,6 +24,8 @@ Route::get('/imoveis', 'mainController@imoveis')->name('imoveis');
 Route::get('/anuncie', 'mainController@anuncie')->name('anuncie');
 Route::get('/contato', 'mainController@contato')->name('contato');
 
+Route::get('/email', 'emailController@email')->name('email');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::group(['middleware' => 'admin.user'], function () {

@@ -22,6 +22,14 @@ export default {
         border-radius: 50px;
         background-color:$verde-menu;
         z-index: 11;
+        border: 1px solid $verde-menu;
+        transition: 0.3s ease all;
+        &:hover{
+            background-color:white;
+            svg{
+                fill:$verde-menu !important;
+            }
+        }
         svg{
             fill:white !important;
             height: 50px !important;

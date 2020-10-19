@@ -2,23 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- favicons  -->
-    <link rel="apple-touch-icon" sizes="57x57" href="{{asset('images/favicon/apple-icon-57x57.png')}}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{asset('images/favicon/apple-icon-60x60.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{asset('images/favicon/apple-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/favicon/apple-icon-76x76.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/favicon/apple-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/favicon/apple-icon-120x120.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/favicon/apple-icon-144x144.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/favicon/apple-icon-152x152.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('images/favicon/apple-icon-180x180.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{asset('images/favicon/android-icon-192x192.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/favicon/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('images/favicon/favicon-96x96.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon/favicon-16x16.png')}}"> 
+    @include('tags.tags')
 
     <!-- meta tags  -->
     <meta name="theme-color" content="">
@@ -51,30 +35,44 @@
     <meta name="twitter:site" content=""/>
 
     <title>Achei Imóveis - inicio</title>
-
-
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div id="app">
-        <wpp-component wpp="whats.com"></wpp-component>
-        <menu-component 
+        <wpp-component wpp="https://api.whatsapp.com/send?phone=5553999660421&text=Ol%C3%A1%2C%20gostaria%20de%20atendimento."></wpp-component>
+        {{-- <searchbutton-component></searchbutton-component> --}}
+        <menu-component transform="true"
             index="{{route('index')}}"
             imobiliaria="{{route('imobiliaria')}}" 
-            imobiliaria="{{route('imobiliaria')}}" 
-            imoveis="{{route('imoveis')}}" 
+            imoveis="{{route('imoveis')}}?id=&cidade=&dormitorios=0&garagens=talvez&minvalue=0.00&maxvalue=5000000.00" 
             anuncie="{{route('anuncie')}}" 
             contato="{{route('contato')}}">
         </menu-component>
         <header-component></header-component>
-        <search-component minimo="0" maximo="5000000" tiposimo="{{json_encode($ImoveisTipo)}}" dadosimo="{{json_encode($imoveis)}}"></search-component>
+        <search-component 
+            tiposelected="[]"
+            city=""
+            bar="[]"
+            minimo="0" 
+            maximo="5000000" 
+            dorm="0"
+            vac="talvez"
+            tiposimo="{{json_encode($ImoveisTipo)}}" 
+            dadosimo="{{json_encode($imoveis)}}" 
+            formroute="{{route('imoveis')}}"
+            active="true">
+        </search-component>
         <destaques-component destaquesimo="{{json_encode($imoveisdestaque)}}" mainroute="{{Voyager::image('/')}}" link="{{route('index')}}"></destaques-component>
+
         <whats-component></whats-component>
         <acheiimo-component></acheiimo-component>
-        <anuncio-component></anuncio-component>
+        <anuncio-component rota="{{route('anuncie')}}"></anuncio-component>
         <footer-component index="{{route('index')}}"></footer-component>
      </div>
 
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/app-vue.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+    Cookies.set('name', 'value', { expires: 7, path: '' });
+</script>
 </body>
 </html>

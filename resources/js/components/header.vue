@@ -1,8 +1,7 @@
 <template>
-    <header>
+    <header id="header">
         <VueSlickCarousel  v-bind="settings" ref="carousel">
             <div v-for="head in heads" :key="head.id" :class="head.class">
-                
                     <div class="container" >
                         <div class="row">
                             <div class="col-12">
@@ -13,8 +12,7 @@
                                 </h1>
                             </div>
                         </div>
-                    </div>
-                
+                    </div>       
             </div>   
        </VueSlickCarousel>
     </header>
@@ -77,7 +75,11 @@ export default {
                         dots: false,
                         fade:true
                     },
+            protocol:window.location.protocol
             }
+        },
+        mounted:function(){
+
         }
             
                     
@@ -109,42 +111,51 @@ export default {
         }
         .bg1{
             background-image: url('/images/bg/banner-1.png'); 
-            background-position: 0 -100px;
+            background-size: cover;
+            background-position: center;
         }
         .bg2{
             background-image: url('/images/bg/banner-2.png'); 
+            background-size: cover;
             background-position: center; 
         }
         .bg3{
-            background-image: url('/images/bg/banner-3.png'); 
+            background-image: url('/images/bg/banner-3.png');
+            background-size: cover; 
             background-position: center; 
         }
         .bg4{
             background-image: url('/images/bg/banner-4.png'); 
-            background-position: 0 0;
+            background-size: cover;
+            background-position: center;
         }
         .bg5{
             background-image: url('/images/bg/banner-5.png'); 
-            background-position: 0 0;
+            background-size: cover;
+            background-position: center;
         }
         .bg6{
             background-image: url('/images/bg/banner-6.png'); 
+            background-size: cover;
             background-position: center; 
         }
         .bg7{
             background-image: url('/images/bg/banner-7.png'); 
-            background-position: 0 0;
+            background-size: cover;
+            background-position: center;
         }
         .bg8{
             background-image: url('/images/bg/banner-8.png'); 
-            background-position: 0 0;
+            background-size: cover;
+            background-position: center;
         }
         header{
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             width:100%;
-            height: 70vh;
+            height: 80vh;
+            transition: 0.3s ease all;
             .container{
                 height: 100%;
                 .row{
@@ -180,7 +191,7 @@ export default {
                 .row{
                     div{
                         h1{
-                            font-size: 50px;
+                            font-size: 44px;
                             
                         }
                     }

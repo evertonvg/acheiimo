@@ -1,21 +1,22 @@
 <template>
-    <section>
+    <section class="anunciar">
        
-        <h2>Quer anunciar <span>o seu imóvel?</span></h2> <a href="" class="default-button">SAIBA MAIS</a>
+        <h2>Quer anunciar <span>o seu imóvel?</span></h2> <a :href="rota" class="default-button">SAIBA MAIS</a>
     </section>
 </template>
 
 <script>
 
     export default{
-        name:'anuncio'
+        name:'anuncio',
+        props:['rota'],
     } 
 </script>
 
 <style lang="scss" scoped>
     @import 'node_modules/bootstrap/scss/bootstrap';
     @import "../../sass/variables.scss";
-    section{
+    .anunciar{
         width: 100%;
         height: 300px;
         background-size: cover;
@@ -39,8 +40,16 @@
             margin-left: 40px;
         }
     }
+    @media(max-width:1440px){
+        .anunciar{
+            height: 440px;
+            h2{
+                font-size: 44px;
+            }
+    }
+    }
     @media(max-width:900px){
-        section{
+        .anunciar{
             height: 140px;
             h2{
                 font-size: 24px;
@@ -48,7 +57,7 @@
         }
     }
     @media(max-width:600px){
-        section{
+        .anunciar{
            flex-direction: column;
            a{
                margin: 0;

@@ -1,0 +1,19 @@
+/*!
+ * Vue.js v2.6.12
+ * (c) 2014-2020 Evan You
+ * Released under the MIT License.
+ */
+
+/*!
+ * vue-nouislider-fork v1.0.27
+ * (c) Jarrad Banks
+ * Released under the MIT License.
+ */
+
+/*!
+ * vuex v3.5.1
+ * (c) 2020 Evan You
+ * @license MIT
+ */
+
+/*! nouislider - 14.0.2 - 6/28/2019 */

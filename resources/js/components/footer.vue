@@ -6,6 +6,10 @@
                     <a :href="index">
                         <img src="/images/logo/LogoAchei.png" alt="Achei imóveis" class="logo">
                     </a>
+                    <br>
+                    <span>
+                        CRECI 25675 J
+                    </span>
                 </div>
                 <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4 infos">
             
@@ -28,7 +32,7 @@
                         <wpp/>
                     </div>
                     <div class="inf miniinf">
-                        (53) 9XXXX-XXXX
+                        (53) 99966-0421
                     </div>
                  
 
@@ -39,16 +43,16 @@
                     </div>
                     <div class="inf">
                         Segunda à Sexta-feira <br>
-                        Xh às Xh <br>
-                        Sábados <br>
-                        Xh às Xh <br>
+                        9h às 12h | 13h30h às 18h<br>
+                        Finais de semana <br>
+                        plantão WhatsApp <br>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 text-right sociais">
-                    <a href="" target="_blank" title="facebook">
+                    <a href="https://www.facebook.com/acheiimoveispel" target="_blank" title="facebook">
                         <facebook/>
                     </a>
-                    <a href="" target="_blank" title="instagram">
+                    <a href="https://www.instagram.com/acheiimoveispel/" target="_blank" title="instagram">
                         <instagram/>
                     </a>
                 </div>
@@ -85,6 +89,15 @@ import clock from './logos/clock'
             padding: 125px 0;
             .container{
                 .row{
+                    .mainlog{
+                        span{
+                            font-size: 12px;
+                            margin-top: 30px;
+                            color: #0c5158;
+                            font-weight: 500;
+                            display: block;
+                        }
+                    }
                     .logo{
                         width: 200px;
                     }
@@ -111,7 +124,7 @@ import clock from './logos/clock'
                             clear: right;
                             height: 40px;
                             margin-bottom: 15px;
-                            font-size: 18px;
+                            font-size: 16px;
                             color:#0c5158;
                             font-weight: 500;
                         }
@@ -121,6 +134,11 @@ import clock from './logos/clock'
                         
                     }
                 }
+            }
+        }
+        @media(max-width:1440px){
+            footer{
+                padding: 75px 0;
             }
         }
 
@@ -134,6 +152,7 @@ import clock from './logos/clock'
                             align-items: center;
                             justify-content: center;
                             padding-bottom: 30px;
+                            flex-direction: column;
                         }
                         .sociais{
                             a{

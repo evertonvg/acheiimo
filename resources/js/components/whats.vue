@@ -8,7 +8,7 @@
                     algum imóvel?
                 </span>
             </h2>
-            <a href="" class="default-button">ENVIE UM WHATS</a>
+            <a href="https://api.whatsapp.com/send?phone=5553999660421&text=Ol%C3%A1%2C%20gostaria%20de%20atendimento." class="default-button" target="_blank">ENVIE UM WHATS</a>
         </div>
     </section>
 </template>
@@ -54,9 +54,10 @@
     }
     @media(max-width:1500px){
         section{
+            height: 440px;
             .container{
                 h2{
-                    font-size: 50px;
+                    font-size: 44px;
                 }
             }
         }

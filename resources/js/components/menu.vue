@@ -1,5 +1,5 @@
 <template>
-    <nav ref="navmenu" >
+    <nav ref="navmenu" :class="{'scroll':transform=='false'}">
         <div class="container">
             <a :href="index">
                 <img src="/images/logo/LogoAchei.png" alt="Logo Achei Imóveis">
@@ -53,7 +53,7 @@ import mixinss from '../mixins/mixins.js'
 export default {
     mixins:[mixinss],
     name:'menunav',
-    props:['index','imobiliaria','imoveis','anuncie','contato'],
+    props:['index','imobiliaria','imoveis','anuncie','contato','transform'],
     // computed: {
     //     menuSelector() {
     //         document.querySelector('nav')
@@ -97,7 +97,9 @@ export default {
     },
     
     created:  function() {
-        window.addEventListener('scroll', this.scroll);
+        if(this.transform=='true'){
+            window.addEventListener('scroll', this.scroll);
+        }
     },
     mounted() {
 

@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\Resizable;
 
 class Imovei extends Model
 {
     protected $table = 'imoveis';
 
+    use Resizable;
+    
     public function status()
     {
         return $this->belongsTo('App\ImoveisStatus','status_id');

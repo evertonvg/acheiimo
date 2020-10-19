@@ -109,6 +109,16 @@ export default {
             }
         }
     }
+    @media(max-width:1440px){
+        section{
+            .conteudo{
+                padding-left: 60px;
+                p{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
     @media(max-width:1200px){
         section{
             padding: 120px 60px;

@@ -1,35 +1,36 @@
 
-@font-face {
-    font-family: "gotham";
-    src: url("/fonts/gotham/GothamLight.ttf") format("truetype");
-    font-weight: 200;
-    font-style: normal;
-}
+// @font-face {
+//     font-family: "gotham";
+//     src: url("/fonts/gotham/GothamLight.ttf") format("truetype");
+//     font-weight: 200;
+//     font-style: normal;
+// }
  
-@font-face {
-    font-family: "gotham";
-    src: url("/fonts//gotham/GothamBook.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: "gotham";
-    src: url("/fonts//gotham/GothamMedium.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: "gotham";
-    src: url("/fonts//gotham/GothamBold.ttf") format("truetype");
-    font-weight: 800;
-    font-style: normal;
-}
+// @font-face {
+//     font-family: "gotham";
+//     src: url("/fonts//gotham/GothamBook.ttf") format("truetype");
+//     font-weight: 400;
+//     font-style: normal;
+// }
+// @font-face {
+//     font-family: "gotham";
+//     src: url("/fonts//gotham/GothamMedium.ttf") format("truetype");
+//     font-weight: 500;
+//     font-style: normal;
+// }
+// @font-face {
+//     font-family: "gotham";
+//     src: url("/fonts//gotham/GothamBold.ttf") format("truetype");
+//     font-weight: 800;
+//     font-style: normal;
+// }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     outline: none;
-    font-family: 'gotham';
+    // font-family: 'gotham';
+    font-family: 'Open Sans', sans-serif;
 }
 
 body{
@@ -66,11 +67,19 @@ section{
     font-size:16px !important;
     font-weight:800 !important;
     transition:0.3s ease all !important;
+    border: none;
     &:hover{
         background-color:#0c5158 !important;
         color:white !important;
         text-decoration: none !important;
     }
+    &:focus{
+        outline: none;
+    }
+}
+
+.default-button.borderled{
+    border: 1px solid #0c5158;
 }
 .menu-button{
     color:white !important;
@@ -88,6 +97,13 @@ section{
     padding: 20px 130px !important;
 }
 
+.messageemail{
+    // position: fixed !important;
+    top: 160px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
 @media(max-width:1500px){
     section{
         padding: 75px 0;
@@ -96,5 +112,8 @@ section{
 @media(max-width:600px){
     .menu-button,.default-button{
         padding:12px 34px !important;
+    }
+    .menu-button.form{
+        padding: 20px 90px !important;
     }
 }   
