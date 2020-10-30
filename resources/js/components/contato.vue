@@ -5,10 +5,10 @@
                 <li class="breadcrumb-item"><a :href="index">Home</a></li>
                 <li class="breadcrumb-item active">{{type}}</li>
             </ol>
-            <h1 v-if="type=='contato'">Fale Conosco</h1>
+            <h1 v-if="type=='Fale Conosco'">Fale Conosco</h1>
             <h1 v-else>Anuncie seu imóvel</h1> 
                     
-            <p v-if="type=='contato'">
+            <p v-if="type=='Fale Conosco'">
                 Deseja comprar ou vender Imóveis em Pelotas e Região? Entre em contato conosco e receba atendimento personalizado. Teremos o maior prazer em lhe atender!
             </p>
             <p v-else>
@@ -18,8 +18,8 @@
                
                 
             <form :action="rota" method="post " class="row" ref="formsend">
-                <input type="hidden" v-if="type=='contato'" value="contato">
-                <input type="hidden" v-else value="anuncie">
+                <input type="hidden" v-if="type=='Fale Conosco'" value="Quero entrar em contato" name="assunto">
+                <input type="hidden" v-else value="Quero anunciar meu imóvel" name="assunto">
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <div class="input">
                         <label for="nome">Nome</label>
@@ -159,6 +159,7 @@ export default {
     @import "../../sass/variables.scss";
     section{
         background-color: $cinza-bg;
+        margin-top: 100px;
         .breadcrumb{
             padding: 0;
             background-color: transparent;
@@ -183,7 +184,7 @@ export default {
             }
             form{
                 background-color: white;
-                padding: 50px 0;
+                padding: 50px 50px;
                 border-radius: 40px;
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
@@ -231,6 +232,21 @@ export default {
                         font-size: 10.4px;
                     }
 
+                }
+            }
+        }
+    }
+    @media(max-width:900px){
+        section{
+            margin-top: 75px;
+        }
+    }
+    @media(max-width:600px){
+        section{
+            margin-top: 75px;
+            .container{
+                form{
+                    padding:50px 15px;
                 }
             }
         }

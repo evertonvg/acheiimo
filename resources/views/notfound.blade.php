@@ -39,30 +39,22 @@
 <body>
     <div id="app">
         <wpp-component wpp="https://api.whatsapp.com/send?phone=5553999660421&text=Ol%C3%A1%2C%20gostaria%20de%20atendimento."></wpp-component>
-        <menu-component transform="true"
+        <menu-component transform="false"
             index="{{route('index')}}"
             imobiliaria="{{route('imobiliaria')}}" 
             imoveis="{{route('imoveis')}}?id=&cidade=&dormitorios=0&garagens=talvez&minvalue=0.00&maxvalue=5000000.00" 
             anuncie="{{route('anuncie')}}" 
             contato="{{route('contato')}}">
         </menu-component>
-        <header-component bg="6"></header-component>
-        <search-component 
-            tiposelected="[]"
-            city=""
-            bar="[]"
-            minimo="0" 
-            maximo="5000000" 
-            dorm="0"
-            vac="talvez"
-            tiposimo="{{json_encode($ImoveisTipo)}}" 
-            dadosimo="{{json_encode($imoveis)}}" 
-            formroute="{{route('imoveis')}}"
-            active="true">
-        </search-component>
-        <destaques-component destaquesimo="{{json_encode($imoveisdestaque)}}" mainroute="{{Voyager::image('/')}}" link="{{route('index')}}"></destaques-component>
-        <whats-component></whats-component>
-        <acheiimo-component imob="{{route('imobiliaria')}}"></acheiimo-component>
+        <section>
+            <div class="container">
+                <img src="{{asset('images/Tela-erro.png')}}" alt="" style="max-width: 100%">
+            </div>
+            <p class="text-center innererror">
+
+            </p>
+        </section>
+
         <anuncio-component rota="{{route('anuncie')}}"></anuncio-component>
         <footer-component index="{{route('index')}}"></footer-component>
         <cookie-component></cookie-component>
@@ -70,6 +62,18 @@
 
 <script src="{{asset('js/app-vue.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-
+<script>
+    let countdownerror = 10
+    let innererror = document.querySelector('.innererror');
+    let timeerror = setInterval(()=>{
+        innererror.innerHTML = 'você será redirecionado em '+countdownerror+' segundos'
+        if(countdownerror==0){
+            clearInterval(timeerror)
+            window.location.href = `{{route('index')}}`
+        }
+        countdownerror--
+        
+    },1000)
+</script>
 </body>
 </html>

@@ -76,6 +76,14 @@ section{
     &:focus{
         outline: none;
     }
+    &:disabled{
+        background-color:#7a8f99 !important;
+        color: #0c5158 !important;
+        &:hover{
+            background-color:#7a8f99 !important;
+            color: #0c5158 !important;
+        }
+    }
 }
 
 .default-button.borderled{
@@ -98,7 +106,10 @@ section{
 }
 
 .messageemail{
-    // position: fixed !important;
+    position: fixed !important;
+    width: 90% !important;
+    left: 5% !important;
+    max-width: initial !important;
     top: 160px;
     margin: 0 auto;
     z-index: 1;

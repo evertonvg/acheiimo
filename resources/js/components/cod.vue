@@ -14,7 +14,7 @@
                     <input type="hidden" name="minvalue" value="0">
                     <input type="hidden" name="maxvalue" value="5000000">
                     <input type="number" name="id" id="id" placeholder="DIGITE O CÓDIGO" ref="numbercod"  v-model="valuecod" max="9999" maxlength="4" >
-                    <input type="submit" value="BUSCAR" class="pesquisar" :disabled="valuecod==''">
+                    <input type="submit" value="BUSCAR" class="pesquisar default-button borderled" :disabled="valuecod==''">
                     <!-- :disabled=" isDisable() ?true:false " -->
                 </form>
             </div>
@@ -76,7 +76,10 @@ export default {
             background-color: white;
             width: 520px;
             height: 320px;
+            border-radius: 40px;
             .head {
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
                 height: 66px;
                 padding-left: 10px;
                 padding-top: 20px;
@@ -102,12 +105,12 @@ export default {
                     justify-content: center;
                     align-items: center;
                     input[type=submit] {
-                        border-radius: 2px;
-                        color: white;
-                        text-transform: uppercase;
-                        background-color:  $verde-fraco;
-                        border: none;
-                        padding: 20px 40px;
+                        // border-radius: 2px;
+                        // color: white;
+                        // text-transform: uppercase;
+                        // background-color:  $verde-fraco;
+                        // border: none;
+                        // padding: 20px 40px;
                         &:disabled{
                             background-color:  #7a8f99;
                         }

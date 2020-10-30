@@ -4,7 +4,7 @@
             Imóveis <span>em Destaque</span>
         </h1>
         <p class="text-center">
-            Confira alguns imóveis que <br>
+            Confira alguns imóveis que <br> 
             separamos para você.
         </p>
         <div class="reference container">
@@ -12,10 +12,15 @@
             <VueSlickCarousel  v-bind="settings" ref="carousel" v-else >
                 <div class="item " v-for="d in dest" :key="d.id">
                     <a :href="link+'/imoveis/'+d.id" >
-                        <div class="image">
-                            <div class="protect" ></div>
-                            <img v-if="d.imagem_capa==null || d.imagem_capa=='null' || d.imagem_capa==''" :src="link+'/images/notfound/LogoAchei.png'" :alt="d.chamada" class="fotohover">
-                            <img v-else :src="mainroute+d.imagem_capa" :alt="d.chamada" class="fotohover">
+                        <div class="image" v-if="d.imagem_capa!=null" :style="`background-image:url(${mainroute+d.imagem_capa.replaceAll('\\', '/')}), url(${link}/images/notfound/LogoAchei.png)`">
+                            <div class="protect" :style="`background-image:url(${link}/images/watermark/watermark.png)`"></div>
+                            <div class="name">
+                                {{d.tipo.tipo}} | {{d.bairro}}
+                                <div class="cod">Cód {{d.id}}</div>
+                            </div>
+                        </div>
+                        <div class="image" v-else :style="`background-image: url(${link}/images/notfound/LogoAchei.png)`">
+                            <div class="protect" :style="`background-image:url(${link}/images/watermark/watermark.png)`"></div>
                             <div class="name">
                                 {{d.tipo.tipo}} | {{d.bairro}}
                                 <div class="cod">Cód {{d.id}}</div>
@@ -28,8 +33,9 @@
                 </div>
                   
             </VueSlickCarousel>
-            <a href="javascript:void(0);" @click="showPrev" class="prev"><al /></a>
-            <a href="javascript:void(0);" @click="showNext" class="next"><ar /></a>
+            <!-- dest.length>3||window.innerWidth<600 -->
+            <a href="javascript:void(0);"  @click="showPrev" class="prev"><al /></a>
+            <a href="javascript:void(0);"  @click="showNext" class="next"><ar /></a>
         </div>
     </section>
 </template>
@@ -45,8 +51,10 @@ export default {
     props:['mainroute','destaquesimo','link'],
     data:function(){
         return{
+            extension:'',
             dest:JSON.parse(this.destaquesimo),
             settings:{
+                
                 arrows: false,
                 dots: false,
                 fade:false,
@@ -89,12 +97,18 @@ export default {
             el.target.parentNode.querySelector('.fotohover').style.transform = 'scale(1)'
         }
     },
+    computed:{
+        ext(el){
+            let path = el
+            return path
+        }
+    },
     mounted(){
-        let fotohover = document.querySelectorAll('.fotohover')
-        fotohover.forEach((el)=>{
-            var ext = el.src.split('.').pop()
-            el.src = `${el.src.slice(0, -4)}-capa.${ext}`
-        })
+        // let fotohover = document.querySelectorAll('.fotohover')
+        // fotohover.forEach((el)=>{
+        //     var ext = el.src.split('.').pop()
+        //     el.src = `${el.src.slice(0, -4)}-capa.${ext}`
+        // })
     }
 }
 </script>
@@ -118,9 +132,7 @@ export default {
         }
         .reference{
             margin: 0 auto;
-            // max-width: 1440px;
             position: relative;
-            // height: 540px;
             padding-bottom: 50px;
             margin-top: 50px;
             .prev,.next{
@@ -147,20 +159,26 @@ export default {
                         text-decoration: none;
                     }
                     .image{
-                        .protect{
-                            position:absolute;
-                            width: 100%;
-                            height: 100%;
-                            top: 0;
-                            left: 0;
-                        }
-                        width: 100%;
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        width: 300px;
+                        margin: 0 auto;
                         height: 300px !important;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         overflow: hidden;
                         position: relative;
+                        .protect{
+                            position:absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            background-position: center;
+                            background-size: cover;
+                        }
                         img{
                             transition: 0.3s ease all;
                             width: 100%;
@@ -182,14 +200,13 @@ export default {
                         }
                         .name{
                                 position: absolute;
-                                // width: 80%;
                                 height:30px !important;
                                 background-color: white;
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 color:#3c7278;
-                                font-size: 20px;
+                                font-size: 18px;
                                 bottom: 0;
                                 padding: 0 16px;
                                 border-top-left-radius: 4px;
@@ -197,7 +214,7 @@ export default {
                                 .cod{
                                     position: absolute;
                                     height:30px !important;
-                                    padding: 0 5px;
+                                    padding: 0 12px;
                                     background-color: white;
                                     display: flex;
                                     align-items: center;

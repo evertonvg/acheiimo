@@ -21,6 +21,7 @@ Route::get('clear-cache', function() {
 Route::get('/', 'mainController@index')->name('index');
 Route::get('/imobiliaria', 'mainController@imobiliaria')->name('imobiliaria');
 Route::get('/imoveis', 'mainController@imoveis')->name('imoveis');
+Route::get('/imoveis/{id}', 'mainController@imovel')->name('imovel');
 Route::get('/anuncie', 'mainController@anuncie')->name('anuncie');
 Route::get('/contato', 'mainController@contato')->name('contato');
 
@@ -42,5 +43,9 @@ Route::group(['prefix' => 'admin'], function () {
 // URL::forceScheme('https');
 
 Auth::routes();
+
+Route::fallback(function () {
+    return view('notfound');
+});
 
 

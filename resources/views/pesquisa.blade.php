@@ -39,6 +39,7 @@
 <body>
 
     <div id="app">
+        <wpp-component wpp="https://api.whatsapp.com/send?phone=5553999660421&text=Ol%C3%A1%2C%20gostaria%20de%20atendimento."></wpp-component>
         <menu-component transform="false"
             index="{{route('index')}}"
             imobiliaria="{{route('imobiliaria')}}" 
@@ -66,6 +67,7 @@
          </div>
         <whats-component></whats-component>
         <footer-component index="{{route('index')}}"></footer-component>
+        <cookie-component></cookie-component>
      </div>
 
 

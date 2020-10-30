@@ -36,7 +36,7 @@ class apiController extends Controller
 
     public function bairro($cidade)
     {
-        $bairros = Imovei::where('cidade', $cidade)->orderBy('bairro')
+        $bairros = Imovei::where('cidade', $cidade)->select('bairro')->distinct()->orderBy('bairro')
             ->get();
         return $bairros;
     }

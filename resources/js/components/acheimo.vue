@@ -16,15 +16,10 @@
         <div class="conteudo">
             <h3>Achei Imóveis</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur 
-                adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. 
+                Comprar um imóvel é um dos momentos mais importantes na vida de uma pessoa e muitas vezes de uma família, 
+                para nós é uma honra poder ser o agente de transformação e estar ao seu lado nesse momento inesquecível. 
             </p>
-            <p>
-                Quis ipsum suspendisse ultrices gravida. Risus 
-                commodoviverra maecenas accumsan lacus 
-                vel facilisis. 
-            </p>
+           <a :href="imob" class="menu-button">SAIBA MAIS</a>
         </div>
     </section>
 </template>
@@ -37,17 +32,22 @@ import al from './logos/arrow-left'
 import ar from './logos/arrow-right'
 export default {
     name: 'acheiimo',
+    props:['imob'],
     components: { VueSlickCarousel,al,ar },
     data: function(){
         return{
             images:[
-                {
-                    id:1,
-                    src:'/images/acheiimo/slide1.png'
-                },
+                // {
+                //     id:1,
+                //     src:'/images/acheiimo/slide1.png'
+                // },
                 {
                     id:2,
-                    src:'/images/acheiimo/slide1.png'
+                    src:'/images/acheiimo/slide2.png'
+                },
+                {
+                    id:3,
+                    src:'/images/acheiimo/slide3.png'
                 }
             ],
             settings:{
@@ -74,7 +74,8 @@ export default {
         padding:120px 140px;
         display: flex;
         .slider{
-            width: 50%;
+            width: 35%;
+            margin-left: 15%;
             .arrowreference{
                 height: 100%;
                 position: relative;
@@ -146,6 +147,7 @@ export default {
             flex-direction: column;
             .slider,.conteudo{
                 width: 100%;
+                margin-left: 0;
             }
             .conteudo{
                 margin-top: 60px;

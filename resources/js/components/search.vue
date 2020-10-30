@@ -102,7 +102,7 @@
                     preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M5 6l5 5l5-5l2 1l-7 7l-7-7z" 
                     fill="#157783"/></svg>
                     </div>
-                    <div class="optionbutton optionbuttonquartos" v-for="q in quanty" :id="q.id" @click="quartovalue=q.qtd" :class="{'selected':quartovalue==q.qtd}">
+                    <div class="optionbutton optionbuttonquartos" v-for="q in quanty" :key="q.id" @click="quartovalue=q.qtd" :class="{'selected':quartovalue==q.qtd}">
                         {{q.qtd}}
                     </div>
                </div>
@@ -123,7 +123,7 @@
                         preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M5 6l5 5l5-5l2 1l-7 7l-7-7z" 
                         fill="#157783"/></svg>
                     </div>
-                    <div class="optionbutton optionbuttonvagas" v-for="q in vacancy" :id="q.id" @click="vagavalue=q.value" :class="{'selected':vagavalue==q.value}">
+                    <div class="optionbutton optionbuttonvagas" v-for="q in vacancy" :key="q.id" @click="vagavalue=q.value" :class="{'selected':vagavalue==q.value}">
                         {{q.value}}
                     </div>
                 </div>
@@ -355,9 +355,6 @@ export default {
                         content.bairros.push(el.bairro);
                     }
                 });
-
-                
-
             })
             this.bairros.sort()
         },
@@ -448,42 +445,34 @@ export default {
                     }
                 });
             })
+            .then(()=>{
+                let varcheckboxbairroelement = document.querySelectorAll('.checkboxbairroelement');
+                varcheckboxbairroelement.forEach((el)=>{
+                    if(el.checked==true){
+                        this.buttonbairros.push(el.dataset.val.normalize("NFD"))
+                    }
+                })   
+            })
+            .then(()=>{
+                if(this.buttonbairros.length==0){
+                    this.innerbuttonbairro = 'Bairro'
+                }else{
+                    this.innerbuttonbairro = ''
+                    for (let i=0; i < this.buttonbairros.length; i++){
+                        if(i>=3){
+                            this.innerbuttonbairro = `${this.innerbuttonbairro}...`
+                        }else{
+                            if(i==this.buttonbairros.length-1){
+                                this.innerbuttonbairro = `${this.innerbuttonbairro} ${this.buttonbairros[i]}`
+                            }else{
+                                this.innerbuttonbairro = `${this.innerbuttonbairro} ${this.buttonbairros[i]},`
+                            }
+                        }
+                    }
+                }
+            })
             this.bairros.sort()
-
-            // window.addEventListener('load',()=>{
-            //     let  checkboxbairro = document.querySelectorAll('.checkboxbairroelement')
-            //     console.log(checkboxbairro)
-
-            // })
-
-            // if(this.bairrosimoveiselecteds.length>0){
-
-            // checkboxbairro.forEach((element)=>{
-            //     console.log(element)
-            //     if(element.checked==true){
-            //         this.buttonbairros.push(element.value.normalize("NFD"))  
-            //     }
-            // })
-
-            // this.innerbuttonbairro = ''
-            // for (let i=0; i < this.buttonbairros.length; i++){
-            //     if(i>=3){
-            //         this.innerbuttonbairro = `${this.innerbuttonbairro}...`
-            //     }else{
-            //         if(i==this.buttonbairros.length-1){
-            //             this.innerbuttonbairro = `${this.innerbuttonbairro} ${this.buttonbairros[i]}`
-            //         }else{
-            //             this.innerbuttonbairro = `${this.innerbuttonbairro} ${this.buttonbairros[i]},`
-            //         }
-            //     }
-            // }
-
-            
-            // }
         }
-
-        
-
         document.addEventListener("click", ()=>{
             this.cidadeactive = false
             this.vagaactive = false
@@ -553,8 +542,9 @@ export default {
                         position: absolute;
                         width: 50px;
                         height: 50px;
+
                         border:2px solid white;
-                        border-radius: 3px;
+                        border-radius: 50px;
                         top: 20px;
                         right: 20px;
                         color:white;
@@ -790,7 +780,9 @@ export default {
         @media(max-width:1440px){
             .search{
                 form{
-                    // width: 100%;
+                    border-top-left-radius: 150px;
+                    padding-top: 50px;
+                    padding-bottom: 24px;
                 }
             }
         }
@@ -799,6 +791,7 @@ export default {
             .search{
                 form{
                     width: 100%;
+                    
                 }
             }    
         }

@@ -34,7 +34,7 @@
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:site" content=""/>
 
-    <title>Achei Imóveis - inicio</title>
+    <title>Achei Imóveis - A imobiliária</title>
 </head>
 <body>
     <div id="app">
@@ -46,23 +46,8 @@
             anuncie="{{route('anuncie')}}" 
             contato="{{route('contato')}}">
         </menu-component>
-        <header-component bg="6"></header-component>
-        <search-component 
-            tiposelected="[]"
-            city=""
-            bar="[]"
-            minimo="0" 
-            maximo="5000000" 
-            dorm="0"
-            vac="talvez"
-            tiposimo="{{json_encode($ImoveisTipo)}}" 
-            dadosimo="{{json_encode($imoveis)}}" 
-            formroute="{{route('imoveis')}}"
-            active="true">
-        </search-component>
-        <destaques-component destaquesimo="{{json_encode($imoveisdestaque)}}" mainroute="{{Voyager::image('/')}}" link="{{route('index')}}"></destaques-component>
-        <whats-component></whats-component>
-        <acheiimo-component imob="{{route('imobiliaria')}}"></acheiimo-component>
+        <header-component bg="1"></header-component>
+        <sobre-component index="{{route('index')}}"></sobre-component>
         <anuncio-component rota="{{route('anuncie')}}"></anuncio-component>
         <footer-component index="{{route('index')}}"></footer-component>
         <cookie-component></cookie-component>

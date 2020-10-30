@@ -25,50 +25,51 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
 export default {
         name: 'banner',
+        props:['bg'],
         components: { VueSlickCarousel },
         data: function(){
            return{
                 heads: [
                         {   
-                            id:1,
-                            bg:'/images/bg/banner-1.png',
-                            class:'bg1'
+                            id:this.bg,
+                            bg:'/images/bg/banner-'+this.bg+'.png',
+                            class:'bg'+this.bg
                         },
-                        {
-                            id:2,
-                            bg:'/images/bg/banner-2.png',
-                            class:'bg2'
-                        },
-                        {
-                            id:3,
-                            bg:'/images/bg/banner-3.png',
-                            class:'bg3'
-                        },
-                        {
-                            id:4,
-                            bg:'/images/bg/banner-4.png',
-                            class:'bg4'
-                        },
-                        {
-                            id:5,
-                            bg:'/images/bg/banner-5.png',
-                            class:'bg5'
-                        },
-                        {
-                            id:6,
-                            bg:'/images/bg/banner-6.png',
-                            class:'bg6'
-                        },
-                        {
-                            id:7,
-                            bg:'/images/bg/banner-7.png',
-                            class:'bg7'
-                        },
-                        {
-                            id:8,
-                            bg:'/images/bg/banner-8.png',
-                            class:'bg8'
-                        }
+                        // {
+                        //     id:2,
+                        //     bg:'/images/bg/banner-2.png',
+                        //     class:'bg2'
+                        // },
+                        // {
+                        //     id:3,
+                        //     bg:'/images/bg/banner-3.png',
+                        //     class:'bg3'
+                        // },
+                        // {
+                        //     id:4,
+                        //     bg:'/images/bg/banner-4.png',
+                        //     class:'bg4'
+                        // },
+                        // {
+                        //     id:5,
+                        //     bg:'/images/bg/banner-5.png',
+                        //     class:'bg5'
+                        // },
+                        // {
+                        //     id:6,
+                        //     bg:'/images/bg/banner-6.png',
+                        //     class:'bg6'
+                        // },
+                        // {
+                        //     id:7,
+                        //     bg:'/images/bg/banner-7.png',
+                        //     class:'bg7'
+                        // },
+                        // {
+                        //     id:8,
+                        //     bg:'/images/bg/banner-8.png',
+                        //     class:'bg8'
+                        // }
                     ],
             settings:{
                         arrows: false,
@@ -107,47 +108,56 @@ export default {
                 height: 100% !important;
                 background-size: cover;
                 background-repeat: no-repeat;
+                
             }
         }
         .bg1{
             background-image: url('/images/bg/banner-1.png'); 
             background-size: cover;
-            background-position: center;
+            background-position: top;
+            background-attachment: fixed;
         }
         .bg2{
             background-image: url('/images/bg/banner-2.png'); 
             background-size: cover;
-            background-position: center; 
+            background-position: top; 
+            background-attachment: fixed;
         }
         .bg3{
             background-image: url('/images/bg/banner-3.png');
             background-size: cover; 
-            background-position: center; 
+            background-position: top; 
+            background-attachment: fixed;
         }
         .bg4{
             background-image: url('/images/bg/banner-4.png'); 
             background-size: cover;
-            background-position: center;
+            background-position: top;
+            background-attachment: fixed;
         }
         .bg5{
             background-image: url('/images/bg/banner-5.png'); 
             background-size: cover;
-            background-position: center;
+            background-position: top;
+            background-attachment: fixed;
         }
         .bg6{
             background-image: url('/images/bg/banner-6.png'); 
             background-size: cover;
-            background-position: center; 
+            background-position: top;
+            background-attachment: fixed; 
         }
         .bg7{
             background-image: url('/images/bg/banner-7.png'); 
             background-size: cover;
-            background-position: center;
+            background-position: top;
+            background-attachment: fixed;
         }
         .bg8{
             background-image: url('/images/bg/banner-8.png'); 
             background-size: cover;
-            background-position: center;
+            background-position: top;
+            background-attachment: fixed;
         }
         header{
             background-size: cover;
@@ -216,8 +226,34 @@ export default {
             }
         }
         .bg1{
-            background-position: center;
-            background-size: cover;
+            background-position: -410px 0px;
+            background-attachment: scroll;
+        }
+        .bg2{
+            background-position: -910px 0px;
+            background-attachment: scroll;
+        }
+        .bg3{
+            background-position: -490px 0;
+            background-attachment: scroll;
+        }
+        .bg4{
+            background-position: -550px 0;
+            background-attachment: scroll;
+        }
+        .bg5{
+            background-attachment: scroll;
+        }
+        .bg6{
+            background-size: cover !important;
+            background-position: -510px 0;
+            background-attachment: scroll;
+        }
+        .bg7{
+            background-attachment: scroll;
+        }
+        .bg8{
+            background-attachment: scroll;
         }
     }
 </style>

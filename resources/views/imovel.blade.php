@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content=""/>
 
-<title>Achei Imóveis - Contato</title>
+<title>Achei Imóveis - Pesquisa</title>
 
 </head>
 
@@ -45,25 +45,34 @@
             {{session('msg')}}
         </p>
     @endif
-
     <div id="app">
-        <wpp-component wpp="https://api.whatsapp.com/send?phone=5553999660421&text=Ol%C3%A1%2C%20gostaria%20de%20atendimento."></wpp-component>
-        <menu-component 
+    <wpp-component wpp="https://api.whatsapp.com/send?phone=555553999660421&text=Ol%C3%A1%2C%20gostaria%20de%20atendimento%20para%20falar%20sobre%20o%20seguinte%20im%C3%B3vel%3A%20.{{url()->current()}}"></wpp-component>
+        <menu-component transform="false"
             index="{{route('index')}}"
             imobiliaria="{{route('imobiliaria')}}" 
             imoveis="{{route('imoveis')}}?id=&cidade=&dormitorios=0&garagens=talvez&minvalue=0.00&maxvalue=5000000.00" 
             anuncie="{{route('anuncie')}}" 
             contato="{{route('contato')}}"
-            transform="false">
+            active="false">
         </menu-component>
-        <contato-component type="{{$type}}" rota="{{route('email')}}" index="{{route('index')}}"></contato-component>
+        <imovel-component 
+            imovel="{{json_encode($imovel)}}"
+            index="{{route('index')}}"
+            previous="{{url()->previous()}}"
+            mainroute="{{Voyager::image('/')}}"
+            rota="{{route('email')}}"
+            descricao="{{$imovel->descricao}}"
+        >
+        </imovel-component>
         <whats-component></whats-component>
         <footer-component index="{{route('index')}}"></footer-component>
         <cookie-component></cookie-component>
      </div>
 
 
-<script src="{{asset('js/function.js')}}"></script>
+
+
+ <script src="{{asset('js/function.js')}}"></script>
 <script src="{{asset('js/app-vue.js')}}"></script>
 <script>
     let av = document.querySelector('.messageemail')
@@ -74,6 +83,7 @@
         },10000)
     }
 </script>
+
 
 </body>
 </html>

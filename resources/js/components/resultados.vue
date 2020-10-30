@@ -2,19 +2,24 @@
     <section>
         <div class="container">
             <div class=" row">
-                <div class="col-12 mt-5">
-                    <button class="default-button borderled" @click="showsearch">{{newsearch}}</button>
+                <div class="col-12 mt-5 " >
+                    <button class="default-button borderled float-right" @click="showsearch">{{newsearch}}</button>
                 </div>
             </div>
-            <h2 class="text-center">{{results.total}} resultados encontrados</h2>
+            <h2 class="text-center">{{results.total}} imóveis à venda encontrados</h2>
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 item" v-for="d in results.data" :key="d.id">
                     <!-- {{r.chamada}} -->
                     <a :href="link+'/imoveis/'+d.id" >
-                        <div class="image">
-                            <div class="protect" ></div>
-                            <img v-if="d.imagem_capa==null || d.imagem_capa=='null' || d.imagem_capa==''" :src="link+'/images/notfound/LogoAchei.png'" :alt="d.chamada" class="fotohover">
-                            <img v-else :src="mainroute+d.imagem_capa" :alt="d.chamada" class="fotohover">
+                        <div class="image" v-if="d.imagem_capa!=null" :style="`background-image:url(${mainroute+d.imagem_capa.replaceAll('\\', '/')}), url(${link}/images/notfound/LogoAchei.png)`">
+                            <div class="protect" :style="`background-image:url(${link}/images/watermark/watermark.png)`"></div>
+                            <div class="name">
+                                {{d.tipo.tipo}} | {{d.bairro}}
+                                <div class="cod">Cód {{d.id}}</div>
+                            </div>
+                        </div>
+                        <div class="image" v-else :style="`background-image: url(${link}/images/notfound/LogoAchei.png)`">
+                            <div class="protect" :style="`background-image:url(${link}/images/watermark/watermark.png)`"></div>
                             <div class="name">
                                 {{d.tipo.tipo}} | {{d.bairro}}
                                 <div class="cod">Cód {{d.id}}</div>
@@ -55,11 +60,11 @@ export default {
         }
     },
     mounted(){
-        let fotohover = document.querySelectorAll('.fotohover')
-        fotohover.forEach((el)=>{
-            var ext = el.src.split('.').pop()
-            el.src = `${el.src.slice(0, -4)}-capa.${ext}`
-        })
+        // let fotohover = document.querySelectorAll('.fotohover')
+        // fotohover.forEach((el)=>{
+        //     var ext = el.src.split('.').pop()
+        //     el.src = `${el.src.slice(0, -4)}-capa.${ext}`
+        // })
     }
 }
 </script>
@@ -68,6 +73,7 @@ export default {
     @import "../../sass/variables.scss";
     h2{
         color:$verde-forte;
+        margin-top: 50px;
     }
     .links{
         display: block;
@@ -84,6 +90,15 @@ export default {
             }
             
         }
+        ul{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 60px;
+                max-width: 320px;
+                margin:0 auto;
+                
+            }
     }
     .page-item.active{
         .page-link{
@@ -107,20 +122,26 @@ export default {
                 text-decoration: none;
             }
             .image{
-                .protect{
-                    position:absolute;
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                }
-                width: 100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 300px !important;
                 height: 300px !important;
+                margin: 0 auto;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
                 position: relative;
+                .protect{
+                    position:absolute;
+                    width: 300px;
+                    height: 300px;
+                    top: 0;
+                    left: 0;
+                    background-position: center;
+                    background-size: cover;
+                }
                 img{
                     transition: 0.3s ease all;
                     width: 100%;
@@ -149,7 +170,7 @@ export default {
                         align-items: center;
                         justify-content: center;
                         color:#3c7278;
-                        font-size: 20px;
+                        font-size: 18px;
                         bottom: 0;
                         padding: 0 16px;
                         border-top-left-radius: 4px;
@@ -157,7 +178,7 @@ export default {
                         .cod{
                             position: absolute;
                             height:30px !important;
-                            padding: 0 5px;
+                            padding: 0 12px;
                             background-color: white;
                             display: flex;
                             align-items: center;

@@ -7,9 +7,10 @@ use TCG\Voyager\Traits\Resizable;
 
 class Imovei extends Model
 {
-    protected $table = 'imoveis';
 
     use Resizable;
+
+    protected $table = 'imoveis';
     
     public function status()
     {
